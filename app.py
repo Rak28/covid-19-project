@@ -31,7 +31,6 @@ def upload():
         filename=secure_filename(file.filename)
         print(file.filename)
         file.save(os.path.join("static/uploads/",secure_filename(file.filename)))
-        request.close
         return render_template('index.html', result = "image uploaded"+filename,filename=filename)
     return render_template("index.html") 
 
