@@ -5,14 +5,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <title>CovidMIT</title>
 </head>
 
-<body>
-    <div>
-        <h1> Welcome! </h1>
-        <p>This is a great website! And a number is next to this{{number}}</p>
+<body>      
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <a class="navbar-brand" href="#">CovidMIT</a>
+          <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+          </ul>
+          <div class="navbar-brand">
+            <button class="btn btn-outline-light my-2 my-lg-0" type="submit">Search</button>
+          </div>
+      </nav>
+<br>
+    
+    <div class="container-fluid">
+      <div class="row content">
 
+        <div class="col-sm-1 side-nav"></div>
+
+        <div class="col-sm-10">
+          <h1>Welcome to our brand new website!</h1>
+          <p>This website focuses on Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+          <hr>
+          <h3>It is available here</h3>
+          <p>This is it</p>
+
+          <h2>Check if you are Covid19 positive with your X-ray</h2>
+
+          <form action = "{{ url_for("upload")}}" method = "POST" enctype = "multipart/form-data" autocomplete="off" required>
+            <input type = "file" name = "file" accept=".jpg,.jpeg,.png"/>
+            <input type = "submit"/>
+          </form>
+          <div>
+            <p>{{result}}</p>
+            <p>{{filename}}</p>
+          </div>
+          {% if filename %}
+          <div>
+            <img src="{{url_for('display_image',filename=filename)}}">
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="col-sm-1 side-nav"></div>
+
+      </div>      
     </div>
 </body>
 
