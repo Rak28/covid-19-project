@@ -24,10 +24,10 @@
           <a class="navbar-brand" href="#">CovidMIT</a>
           <ul class="navbar-nav  mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="{{ url_for('index')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About us</a>
+              <a class="nav-link" href="{{ url_for('index')}}">About us</a>
           </ul>
           <div class="navbar-brand">
             <button class="btn btn-outline-light my-2 my-lg-0" type="submit">Search</button>
@@ -41,27 +41,23 @@
         <div class="col-sm-1 side-nav"></div>
 
         <div class="col-sm-10">
-          <h1>Welcome to our brand new website!</h1>
-          <p>This website focuses on Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+          <h1>COVID / PNEUMONIA test with X-ray</h1>
+          <p>This website focuses on detecting diseases through chest x-rays of any person. Diseases like COVID-19, pneumonmia. etc can be detected easily with no cost. This helps in diagnosing the issue without any hassle. Hope public gets benfited from this young innovative initiative. </p>
           <hr>
-          <h3>It is available here</h3>
-          <p>This is it</p>
+          <p>Disclaimer: This is only for educational purposes. Please don't use it commercially. We are not responsible for any kind of losses or harm caused to you by this project.</p>
+          <h3>Our AI model has an accuracy of more than 90 percent.</h3>
 
-          <h2>Check if you are Covid19 positive with your X-ray</h2>
+          <h4>Upload your chest x-ray here. Check if you are Covid19 positive with your X-ray</h4>
 
-          <form action = "{{ url_for("upload")}}" method = "POST" enctype = "multipart/form-data" autocomplete="off" required>
-            <input type = "file" name = "file" accept=".jpg,.jpeg,.png"/>
+          <form action = "{{ url_for("upload")}}" method = "POST" enctype = "multipart/form-data" >
+            <input type = "file" name = "file" accept=".jpg,.jpeg,.png" autocomplete="off" required/>
             <input type = "submit"/>
           </form>
-          <div>
-            <p>{{result}}</p>
-            <p>{{filename}}</p>
-          </div>
-          {% if filename %}
-          <div>
-            <img src="{{url_for('display_image',filename=filename)}}">
-          </div>
-          {% endif %}
+          
+
+          {% block content %}
+          {% endblock %}
+
         </div>
 
         <div class="col-sm-1 side-nav"></div>
